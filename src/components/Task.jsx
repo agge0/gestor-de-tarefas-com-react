@@ -1,4 +1,4 @@
-import { ChevronRight, TrashIcon } from "lucide-react"
+import { Check, ChevronRight, TrashIcon } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 function Task({tasks, onTaskClick, ondDeleteTaskClick}){
@@ -6,7 +6,7 @@ function Task({tasks, onTaskClick, ondDeleteTaskClick}){
     
     function onSeeDetailsClick(task){
         const queryStringSet = new URLSearchParams()
-        
+
         queryStringSet.set("title", task.title)
         queryStringSet.set("description", task.description)
 
@@ -20,8 +20,9 @@ function Task({tasks, onTaskClick, ondDeleteTaskClick}){
             <li key={task.id} className="flex gap-3">
 
                 <button onClick = { () => onTaskClick(task.id)} className={`
-                    bg-slate-400 w-full text-white p-2 rounded-md 
+                    bg-slate-400 w-full text-white p-2 rounded-md flex gap-2 items-center 
                     ${task.isCompleted && "line-through"}`}>
+                    {task.isCompleted && <Check/>}
                     {task.title}
                 </button>
 
